@@ -3,7 +3,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 require APPPATH . '/libraries/REST_Controller.php';
-use Restserver\Libraries\REST_Controller;
 
 class Harga extends REST_Controller {
 
@@ -12,14 +11,14 @@ class Harga extends REST_Controller {
         $this->load->database();
     }
 
-    //Menampilkan data harga
+    //Menampilkan data kontak
     function index_get() {
-        $id = $this->get('kode');
-        if ($id == '') {
-            $harga = $this->db->get('harga')->result();
+        $kode = $this->get('kode');
+        if ($kode == '') {
+            $harga = $this->db->get('Harga')->result();
         } else {
             $this->db->where('kode', $kode);
-            $harga = $this->db->get('harga')->result();
+            $harga = $this->db->get('Harga')->result();
         }
         $this->response($harga, 200);
     }
