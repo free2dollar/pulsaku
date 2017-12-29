@@ -8,5 +8,5 @@ Fitur yang akan di tambahkan nanti,
 
 (Tambahan lain)
 - fitur member (Android only)
-    -- Saldo
-    -- ID member
+    - Saldo
+    - ID member
