@@ -12,7 +12,7 @@ class Harga extends REST_Controller {
         $this->load->database();
     }
 
-    //Menampilkan data kontak
+    //Menampilkan data harga
     function index_get() {
         $id = $this->get('kode');
         if ($id == '') {
