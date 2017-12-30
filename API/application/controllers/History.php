@@ -15,34 +15,10 @@ class History extends REST_Controller {
     function index_get() {
         $id_trx = $this->get('id_trx');
         if ($id_trx == '') {
-            $daftar_pembeli = $this->db->select('id_trx, 
-                                                nm_pembeli,
-                                                kode_pembayaran,
-                                                operator.jenis_operator,
-                                                Harga.nominal,
-                                                Harga.harga,
-                                                tgl_beli,
-                                                jam_beli,
-                                                jam_expr,
-                                                jenis_pembayaran,
-                                                daftar_pembeli.status')
-                                ->join('harga','daftar_pembeli.kode = Harga.kode')
-                                ->result();
+            $daftar_pembeli = $this->db->get('daftar_pembeli')->result();
         } else {
             $this->db->where('id_trx', $id_trx);
-            $daftar_pembeli = $this->db->select('id_trx, 
-                                                nm_pembeli,
-                                                kode_pembayaran,
-                                                operator.jenis_operator,
-                                                Harga.nominal,
-                                                Harga.harga,
-                                                tgl_beli,
-                                                jam_beli,
-                                                jam_expr,
-                                                jenis_pembayaran,
-                                                daftar_pembeli.status')
-                                ->join('harga','daftar_pembeli.kode = Harga.kode')
-                                ->result();
+            $daftar_pembeli = $this->db->get('daftar_beli')->result();
         }
         $this->response($daftar_pembeli, 200);
     }
