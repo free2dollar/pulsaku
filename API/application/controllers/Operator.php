@@ -11,24 +11,24 @@ class Operator extends REST_Controller {
         $this->load->database();
     }
 
-    //Menampilkan data Operator
+    //Menampilkan data operator
     function index_get() {
         $id_operator = $this->get('id_operator');
         if ($id_operator == '') {
-            $operator = $this->db->get('Operator')->result();
+            $operator = $this->db->get('operator')->result();
         } else {
             $this->db->where('id_operator', $id_operator);
-            $operator = $this->db->get('Operator')->result();
+            $operator = $this->db->get('operator')->result();
         }
         $this->response($operator, 200);
     }
 
-    //Menambahkan data Operator
+    //Menambahkan data operator
     function index_post() {
         $data = array(
                     'id_operator'           => $this->post('id_operator'),
                     'jenis_operator'    => $this->post('jenis_operator'));
-        $insert = $this->db->insert('Operator', $data);
+        $insert = $this->db->insert('operator', $data);
         if ($insert) {
             $this->response($data, 200);
         } else {
@@ -36,13 +36,13 @@ class Operator extends REST_Controller {
         }
     }
 
-    //Memperbarui data Operator yang telah ada
+    //Memperbarui data operator yang telah ada
 	function index_put() {
         $id_operator = $this->put('id_operator');
         $data = array(
             'jenis_operator'         => $this->put('jenis_operator'));
         $this->db->where('id_operator', $id_operator);
-        $update = $this->db->update('Operator', $data);
+        $update = $this->db->update('operator', $data);
         if ($update) {
             $this->response($data, 200);
         } else {
@@ -50,11 +50,11 @@ class Operator extends REST_Controller {
         }
     }
 
-    //Delete data Operator
+    //Delete data operator
     function index_delete() {
         $id_operator = $this->delete('id_operator');
         $this->db->where('id_operator', $id_operator);
-        $delete = $this->db->delete('Operator');
+        $delete = $this->db->delete('operator');
         if ($delete) {
             $this->response(array('status' => 'success'), 201);
         } else {
